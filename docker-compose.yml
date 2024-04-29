@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  neo4j:
+    image: neo4j:5.16.0
+    ports:
+      - "7473:7473"   # HTTPS
+      - "7474:7474"   # HTTP
+      - "7687:7687"   # BOLT
+    volumes:
+      - ./docker-volumes/neo4j5/plugins:/plugins
+      - ./docker-volumes/neo4j5/data:/var/lib/neo4j/data
+      - ./docker-volumes/neo4j5/import:/import
+      - ./docker-volumes/neo4j5/conf:/var/lib/neo4j/conf
+      - ./docker-volumes/neo4j5/logs:/logs
+    environment:
+      - NEO4J_AUTH=neo4j/MyNeo4jPassword1234!
